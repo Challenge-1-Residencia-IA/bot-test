@@ -6,13 +6,16 @@ import sys
 import time
 from typing import Any, Dict, List, Optional
 
-# Garante suporte a UTF-8 no terminal Windows para exibição de emojis e caracteres especiais
+# Enable UTF‑8 on Windows terminals
 if sys.platform == "win32":
     try:
         sys.stdout.reconfigure(encoding="utf-8")
         sys.stderr.reconfigure(encoding="utf-8")
     except Exception:
         pass
+
+# Load configuration from src/config.py
+from src.config import NUM_WORKERS_IA, AUTOSCALE_ENABLED, AUTOSCALE_STEP, AUTOSCALE_MAX_FACTOR
 
 from dotenv import load_dotenv
 from groq import AsyncGroq
